@@ -25,7 +25,7 @@ export interface PortfolioItem {
   imageUrl: string;
 }
 
-export type ViewState = 'HOME' | 'SEO' | 'WEBDESIGN' | 'CASE_STUDIES' | 'PRICING' | 'FEATURES';
+export type ViewState = 'HOME' | 'SEO' | 'WEBDESIGN' | 'AI_AGENCY' | 'CASE_STUDIES' | 'PRICING' | 'FEATURES';
 
 export interface CaseStudy {
   id: string;
