@@ -4,70 +4,146 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Helper | Modern Web Design in Richland, WA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                dark: '#0f172a',
-                accent: '#06b6d4',
-                purple: '#8b5cf6',
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'blob': 'blob 7s infinite',
-              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-              'shimmer': 'shimmer 2s linear infinite',
-              'spin-slow': 'spin 12s linear infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              },
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              shimmer: {
-                '0%': { backgroundPosition: '200% 0' },
-                '100%': { backgroundPosition: '-200% 0' }
-              }
+    
+    <!-- Base meta tags -->
+    <meta name="description" content="Digital Helper transforms outdated local business websites in Richland, WA into modern, high-converting sites. Web design, mobile optimization & AI-powered content for Tri-Cities businesses.">
+    <meta name="keywords" content="web design Richland WA, website design Tri-Cities, local SEO Washington, mobile website design, AI web design, Kennewick web design, Pasco web design">
+    <meta name="author" content="Digital Helper Agency">
+    <link rel="canonical" href="https://digital-helper.com/">
+
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="Digital Helper | Modern Web Design in Richland, WA">
+    <meta property="og:description" content="Transform your outdated website into a modern, customer-generating machine. Serving Richland & Tri-Cities businesses.">
+    <meta property="og:image" content="https://digital-helper.com/og-image.jpg">
+    <meta property="og:url" content="https://digital-helper.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Digital Helper Agency">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Helper | Modern Web Design in Richland, WA">
+    <meta name="twitter:description" content="Transform your outdated website into a modern, customer-generating machine.">
+    <meta name="twitter:image" content="https://digital-helper.com/twitter-image.jpg">
+
+    <!-- Additional SEO meta tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="geo.region" content="US-WA">
+    <meta name="geo.placename" content="Richland">
+    <meta name="geo.position" content="46.218284;-119.4432532">
+    <meta name="ICBM" content="46.218284, -119.4432532">
+
+    <!-- Performance: Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://aistudiocdn.com">
+    <link rel="dns-prefetch" href="https://picsum.photos">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#06b6d4">
+
+    <!-- Local Business Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://digital-helper.com/#organization",
+      "name": "Digital Helper Agency",
+      "legalName": "Digital Helper",
+      "description": "Modern web design agency specializing in transforming outdated local business websites into high-converting digital assets. Serving Richland and Tri-Cities area.",
+      "url": "https://digital-helper.com",
+      "logo": "https://digital-helper.com/logo.png",
+      "image": "https://digital-helper.com/og-image.jpg",
+      "telephone": "+1-509-555-0123",
+      "email": "hello@digitalhelper.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Richland",
+        "addressRegion": "WA",
+        "postalCode": "99352",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "46.218284",
+        "longitude": "-119.4432532"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Richland",
+          "sameAs": "https://en.wikipedia.org/wiki/Richland,_Washington"
+        },
+        {
+          "@type": "City",
+          "name": "Kennewick"
+        },
+        {
+          "@type": "City",
+          "name": "Pasco"
+        },
+        {
+          "@type": "City",
+          "name": "West Richland"
+        }
+      ],
+      "priceRange": "$3000-$15000",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/digitalhelper",
+        "https://www.linkedin.com/company/digitalhelper",
+        "https://twitter.com/digitalhelper"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Website Modernization",
+              "description": "Complete website redesign and modernization for local businesses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Local SEO Services",
+              "description": "Search engine optimization for local Tri-Cities businesses"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile-First Design",
+              "description": "Responsive website design optimized for mobile devices"
             }
           }
-        }
+        ]
       }
+    }
     </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      /* Fallback for fonts before CSS loads */
       body { font-family: 'Inter', sans-serif; background-color: #020617; color: white; }
-      /* Custom scrollbar for chat */
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-      }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
     </style>
   <script type="importmap">
 {
@@ -80,7 +156,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
