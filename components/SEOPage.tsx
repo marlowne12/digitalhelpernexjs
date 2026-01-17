@@ -1,5 +1,5 @@
-import React from 'react';
-import { Search, TrendingUp, MapPin, Target, BarChart, Globe, Activity, CheckCircle2, Megaphone, Star, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, TrendingUp, MapPin, Target, BarChart, Globe, Activity, CheckCircle2, Megaphone, Star, ShieldCheck, ChevronDown, DollarSign, Calendar, Zap } from 'lucide-react';
 
 export const SEOPage: React.FC = () => {
   return (
@@ -132,7 +132,7 @@ export const SEOPage: React.FC = () => {
         </div>
 
         {/* Local Impact */}
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-12 text-center relative overflow-hidden">
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-12 text-center relative overflow-hidden mb-24">
           <h2 className="text-3xl font-bold mb-12">Why Tri-Cities Chooses Us</h2>
           <div className="grid md:grid-cols-4 gap-8">
             {[
@@ -148,6 +148,154 @@ export const SEOPage: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Pricing Section */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">SEO Services Pricing</h2>
+            <p className="text-slate-400">Pay-per-lead model. You only pay when we deliver qualified leads.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Local Starter",
+                price: "$799",
+                period: "/month",
+                description: "Perfect for single-location businesses",
+                features: [
+                  "Google Business Profile optimization",
+                  "5 target keywords",
+                  "Monthly ranking reports",
+                  "Citation building (10/month)",
+                  "Review management setup"
+                ],
+                highlighted: false
+              },
+              {
+                name: "Growth Package",
+                price: "$1,499",
+                period: "/month",
+                description: "Most popular for competitive markets",
+                features: [
+                  "Everything in Local Starter",
+                  "15 target keywords",
+                  "Content creation (2 blog posts/month)",
+                  "Advanced schema markup",
+                  "Local backlink building",
+                  "Competitor analysis"
+                ],
+                highlighted: true
+              },
+              {
+                name: "Enterprise SEO",
+                price: "Custom",
+                period: "pricing",
+                description: "Multi-location or highly competitive industries",
+                features: [
+                  "Everything in Growth",
+                  "Unlimited keywords",
+                  "Weekly content creation",
+                  "Technical SEO audits",
+                  "Custom strategy & implementation",
+                  "Dedicated SEO manager"
+                ],
+                highlighted: false
+              }
+            ].map((tier, i) => (
+              <div key={i} className={`relative p-8 rounded-3xl border ${tier.highlighted ? 'border-cyan-500 bg-gradient-to-br from-cyan-900/20 to-slate-900' : 'border-slate-800 bg-slate-900/40'} transition-all hover:-translate-y-2 duration-300`}>
+                {tier.highlighted && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-cyan-500 text-slate-950 text-xs font-bold rounded-full">
+                    MOST POPULAR
+                  </div>
+                )}
+                <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold">{tier.price}</span>
+                  <span className="text-slate-400">{tier.period}</span>
+                </div>
+                <p className="text-slate-400 text-sm mb-6">{tier.description}</p>
+                <ul className="space-y-3 mb-8">
+                  {tier.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <CheckCircle2 size={16} className="text-green-400 shrink-0 mt-0.5" />
+                      <span className="text-slate-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className={`w-full py-3 rounded-xl font-semibold transition-all ${tier.highlighted ? 'bg-cyan-500 text-slate-950 hover:bg-cyan-400' : 'bg-slate-800 text-white hover:bg-slate-700'}`}>
+                  Get Started
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 90-Day Process */}
+        <div className="mb-24 bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Our 90-Day Launch Process</h2>
+            <p className="text-slate-400">From audit to ranking dominance in three strategic phases</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                phase: "Month 1",
+                title: "Foundation & Audit",
+                icon: <Target className="text-cyan-400" size={32} />,
+                tasks: [
+                  "Complete technical SEO audit",
+                  "Keyword research & competitor analysis",
+                  "Google Business Profile optimization",
+                  "Schema markup implementation",
+                  "Citation audit & cleanup"
+                ]
+              },
+              {
+                phase: "Month 2",
+                title: "Content & Authority",
+                icon: <Megaphone className="text-purple-400" size={32} />,
+                tasks: [
+                  "Launch content marketing strategy",
+                  "Publish 2-4 optimized blog posts",
+                  "Build high-quality local backlinks",
+                  "Review generation campaign",
+                  "Social media profile optimization"
+                ]
+              },
+              {
+                phase: "Month 3",
+                title: "Optimization & Scale",
+                icon: <TrendingUp className="text-green-400" size={32} />,
+                tasks: [
+                  "Performance analysis & refinement",
+                  "Advanced on-page optimization",
+                  "Expand keyword targeting",
+                  "Conversion rate optimization",
+                  "Monthly strategy meeting & reporting"
+                ]
+              }
+            ].map((month, i) => (
+              <div key={i} className="bg-slate-950/50 p-8 rounded-2xl border border-slate-800 hover:border-cyan-500/30 transition-all">
+                <div className="mb-4 bg-slate-900 w-fit p-4 rounded-2xl border border-slate-800">
+                  {month.icon}
+                </div>
+                <div className="text-cyan-400 text-sm font-bold mb-2">{month.phase}</div>
+                <h3 className="text-xl font-bold mb-4">{month.title}</h3>
+                <ul className="space-y-2">
+                  {month.tasks.map((task, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-400">
+                      <CheckCircle2 size={14} className="text-green-400 shrink-0 mt-1" />
+                      <span>{task}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <FAQSection />
       </div>
 
       <style>{`
@@ -155,6 +303,67 @@ export const SEOPage: React.FC = () => {
             from { width: 0%; }
         }
       `}</style>
+    </div>
+  );
+};
+
+const FAQSection: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "How long does it take to see SEO results?",
+      a: "Most clients see measurable improvements in 60-90 days. Local rankings can improve faster (30-60 days) with Google Business Profile optimization, while organic rankings typically take 3-6 months for competitive keywords."
+    },
+    {
+      q: "What's the difference between local SEO and regular SEO?",
+      a: "Local SEO focuses on geographic-specific searches like 'plumber near me' or 'web design Richland WA'. It emphasizes Google Business Profile, local citations, and location-based content to attract nearby customers."
+    },
+    {
+      q: "Do you require long-term contracts?",
+      a: "No. We offer month-to-month services because we're confident in our results. Most clients stay with us because we consistently deliver qualified leads and measurable ROI."
+    },
+    {
+      q: "How do you measure SEO success?",
+      a: "We track keyword rankings, organic traffic, Google Business Profile insights, phone calls, form submissions, and most importantly - actual revenue generated from SEO leads."
+    },
+    {
+      q: "Can you guarantee first page rankings?",
+      a: "No ethical SEO agency can guarantee specific rankings due to Google's constantly changing algorithm. However, we can guarantee transparent reporting, proven strategies, and our best effort to dominate your local market."
+    },
+    {
+      q: "What industries do you work with in Tri-Cities?",
+      a: "We specialize in local service businesses: HVAC, plumbing, legal services, healthcare, real estate, restaurants, and professional services. Any business that relies on local customers can benefit from our SEO services."
+    }
+  ];
+
+  return (
+    <div className="mb-24">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+        <p className="text-slate-400">Everything you need to know about our local SEO services</p>
+      </div>
+      <div className="max-w-3xl mx-auto space-y-4">
+        {faqs.map((faq, i) => (
+          <div key={i} className="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+            <button
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              className="w-full p-6 text-left flex items-center justify-between hover:bg-slate-900/60 transition-colors"
+            >
+              <span className="font-semibold text-lg pr-8">{faq.q}</span>
+              <ChevronDown
+                size={20}
+                className={`shrink-0 text-cyan-400 transition-transform ${openIndex === i ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {openIndex === i && (
+              <div className="px-6 pb-6 text-slate-400 leading-relaxed">
+                {faq.a}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

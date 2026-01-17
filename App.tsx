@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Hero } from './components/Hero';
 import { WebsiteAudit } from './components/WebsiteAudit';
@@ -6,15 +6,24 @@ import { Services } from './components/Services';
 import { Contact } from './components/Contact';
 import { ChatWidget } from './components/ChatWidget';
 import { Navbar } from './components/Navbar';
-import { SEOPage } from './components/SEOPage';
-import { WebDesignPage } from './components/WebDesignPage';
-import { AIAgencyPage } from './components/AIAgencyPage';
-import { CaseStudiesPage } from './components/CaseStudiesPage';
 import { RevealOnScroll } from './components/RevealOnScroll';
-import { Pricing } from './components/Pricing';
-import { Features } from './components/Features';
-import { Testimonials } from './components/Testimonials';
 import { SEO } from './components/SEO';
+
+// Lazy load page components for code splitting
+const SEOPage = lazy(() => import('./components/SEOPage'));
+const WebDesignPage = lazy(() => import('./components/WebDesignPage'));
+const AIAgencyPage = lazy(() => import('./components/AIAgencyPage'));
+const CaseStudiesPage = lazy(() => import('./components/CaseStudiesPage'));
+const Pricing = lazy(() => import('./components/Pricing'));
+const Features = lazy(() => import('./components/Features'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+
+// Loading component for lazy-loaded routes
+const PageLoader: React.FC = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400"></div>
+  </div>
+);
 
 const Footer: React.FC = () => (
   <footer className="bg-slate-950 border-t border-slate-900 py-12 text-slate-500 text-sm">
@@ -179,7 +188,8 @@ const App: React.FC = () => {
     <div className="bg-slate-950 min-h-screen text-slate-200 selection:bg-cyan-500/30">
       <Navbar />
 
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/seo" element={
           <>
@@ -248,7 +258,8 @@ const App: React.FC = () => {
             <Testimonials />
           </>
         } />
-      </Routes>
+        </Routes>
+      </Suspense>
 
       <RevealOnScroll>
         <Contact />

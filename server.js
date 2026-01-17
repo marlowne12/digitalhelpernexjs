@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
+import compression from 'compression';
 
 // Import API handlers
 import chatHandler from './api/chat.js';
@@ -17,6 +18,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(compression({ level: 6 }));
 app.use(cors());
 app.use(express.json());
 
@@ -26,8 +28,17 @@ app.post('/api/email-draft', emailDraftHandler);
 app.post('/api/business-analysis', businessAnalysisHandler);
 app.post('/api/generate-case-study', caseStudyHandler);
 
-// Serve static files from dist directory
-app.use(express.static(path.join(__dirname, 'dist')));
+// Serve static files from dist directory with caching
+app.use(express.static(path.join(__dirname, 'dist'), {
+  maxAge: '1y',
+  etag: true,
+  lastModified: true,
+  setHeaders: (res, filepath) => {
+    if (filepath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  }
+}));
 
 // Handle React Router - send all non-API requests to index.html
 app.get('*', (req, res) => {
